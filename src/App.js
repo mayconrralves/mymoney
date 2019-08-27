@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import axios from 'axios'
+import useGet from './useGet'
+import usePost from './usePost';
+
+  const url = "https://mymoney-99b37.firebaseio.com/movimentacoes/2019-08.json"
+  
+  
 
 function App() {
+
+  const data = useGet(url)
+  const data2 = useGet('http://httpbin.org/ip')
+
+  const [postData, post] = usePost(url)
+
+  const saveNew = () => {
+      post({valor: 10, descricao: 'ola'})
+  }
+  
+  if(data.loading) {
+    return <p>Loading...</p>
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h1>My Money</h1>
+        {JSON.stringify(data.data)}
+        {JSON.stringify(data2)}
+        <button onClick={saveNew}>Save</button>
+        <pre>{JSON.stringify(postData)}</pre>
     </div>
   );
 }
 
-export default App;
+export default App
+
