@@ -6,7 +6,7 @@ const reducer = (state, action) => {
     if(action.type === 'REQUEST'){
       return {
         ...state,
-        loading: false
+        loading: true
       }
     }
     if(action.type === 'SUCCESS'){
@@ -21,7 +21,7 @@ const reducer = (state, action) => {
 
 const usePost = (url) => {
     const [data, dispatch] = useReducer(reducer, {
-        loading: true,
+        loading: false,
         data: {}
       })
     const post = data => {

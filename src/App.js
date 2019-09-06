@@ -1,35 +1,28 @@
 import React from 'react'
-import axios from 'axios'
-import useGet from './useGet'
-import usePost from './usePost';
+import {BrowserRouter, Route} from 'react-router-dom'
 
-  const url = "https://mymoney-99b37.firebaseio.com/movimentacoes/2019-08.json"
-  
-  
+import Header from './elements/Header'
+import Home from './pages/Home'
+import Movimentacoes from './pages/Movimentacoes'
+
+
+
+
 
 function App() {
 
-  const data = useGet(url)
-  const data2 = useGet('http://httpbin.org/ip')
-
-  const [postData, post] = usePost(url)
-
-  const saveNew = () => {
-      post({valor: 10, descricao: 'ola'})
-  }
-  
-  if(data.loading) {
-    return <p>Loading...</p>
-  }
+   
   return (
-    <div className="App">
-        <h1>My Money</h1>
-        {JSON.stringify(data.data)}
-        {JSON.stringify(data2)}
-        <button onClick={saveNew}>Save</button>
-        <pre>{JSON.stringify(postData)}</pre>
-    </div>
-  );
+    <BrowserRouter>
+      <div>
+        <Header/>
+        <Route path='/' exact component={Home}/>
+        <Route path='/movimentacoes/:data' component={Movimentacoes} />
+      </div>
+    </BrowserRouter>
+    
+    
+  )
 }
 
 export default App
