@@ -22,8 +22,7 @@ const useGet = url => {
       loading: true,
       data: {}
     })
-    //const [loading, setLoading] = useState(true)
-    //const [data, setData] = useState({})
+  
     useEffect(() => {
       dispatch({type: 'REQUEST'})
       axios

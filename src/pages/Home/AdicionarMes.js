@@ -29,16 +29,19 @@ const maxAno = 2022
     }
      return (
          //fragment
-         <>
-             <h2>Adicionar Mês</h2>
-            <select ref={refAno}>
+         <div className='input-group mb-3'>
+             <h4>Adicionar Mês: </h4>
+            <select ref={refAno} className='custom-select'>
                 {anos.map(ano => <option key={ano} value={ano}>{ano}</option>)}
             </select>
-            <select ref={refMes}>
+            <select ref={refMes} className='custom-select'>
                 {meses.map(zeroPad).map( mes => <option key={mes} value={mes}>{mes}</option>)}
             </select>
-            <button onClick={verMes} className='btn btn-success'>Adicionar mês</button>
-        </>
+            <div className='input-group-append'>
+                 <button onClick={verMes} className='btn btn-success'>Adicionar mês</button>
+            </div>
+           
+        </div>
      )
  }
  export default AdicionarMes

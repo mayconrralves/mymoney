@@ -16,8 +16,8 @@ const Meses = () => {
 
       if(data.data){
         return (
-            <table className='table'>
-              <thead>
+            <table className='table table-striped table-bordered text-center'>
+              <thead className='thead-dark '>
                 <tr>
                   <th>Mes</th>
                   <th>Previsão Entrada</th>

@@ -37,11 +37,11 @@ const Movimentacoes = ({match}) => {
         <h1>Movimentações</h1>
         <InfoMes data={match.params.data}/>
         
-        <table className='table'>
-          <thead>
+        <table className='table table-striped table-bordered text-center'>
+          <thead className='thead-dark'>
             <tr>
               <th> Descricao</th>
-              <th className='text-right'>Valor</th>
+              <th >Valor</th>
             </tr>  
           </thead>
           <tbody>
