@@ -1,6 +1,6 @@
 import React from 'react'
 import Rest from '../../utils/rest'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 const baseUrl = 'https://mymoney-99b37.firebaseio.com/'
 const {useGet, usePost, useDelete} = Rest(baseUrl)
@@ -9,6 +9,9 @@ const Meses = () => {
     const data =  useGet('meses')
     if(data.loading){
         return <span>Carregando ...</span>
+      }
+      if(data.error && data.error ==='Permission denied'){
+        return <Redirect to='/login/' />
       }
 
       if(data.data){
